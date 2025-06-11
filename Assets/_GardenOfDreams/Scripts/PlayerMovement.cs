@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts
@@ -7,11 +8,19 @@ namespace _GardenOfDreams.Scripts
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _moveSpeed = 3;
         [SerializeField] private Joystick _joystick;
+        [SerializeField] private PlayerAnimationController _animator;
+
+        private Vector2 _moveInput;
+        
+        private void Update()
+        {
+            _animator.SetSpeed(_moveInput);
+        }
 
         private void FixedUpdate()
         {
-            Vector2 direction = new Vector2(_joystick.Horizontal, _joystick.Vertical);
-            _rigidbody2D.velocity = direction * _moveSpeed;
+            _moveInput = _joystick.Direction;
+            _rigidbody2D.velocity = _moveInput * _moveSpeed;
         }
     }
 }
