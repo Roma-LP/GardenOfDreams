@@ -1,4 +1,5 @@
 using System;
+using _GardenOfDreams.Scripts.Player;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts
@@ -9,12 +10,17 @@ namespace _GardenOfDreams.Scripts
         [SerializeField] private float _moveSpeed = 3;
         [SerializeField] private Joystick _joystick;
         [SerializeField] private PlayerAnimationController _animator;
+        [SerializeField] private LookTargetController _lookTargetController;
+        [SerializeField] private ArmRotator _armRotator;
 
         private Vector2 _moveInput;
         
         private void Update()
         {
             _animator.SetSpeed(_moveInput);
+            
+            _lookTargetController.UpdateLookTarget();
+            _armRotator.UpdateArm();
         }
 
         private void FixedUpdate()
