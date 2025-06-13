@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - CameraBounds
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemies
+    uniqueID: 3392538407
+    locked: 0
   - name: Persons
     uniqueID: 986200683
+    locked: 0
+  - name: UI
+    uniqueID: 2986528329
     locked: 0

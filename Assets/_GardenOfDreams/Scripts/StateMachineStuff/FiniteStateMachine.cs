@@ -15,7 +15,7 @@ namespace _GardenOfDreams.Scripts.StateMachineStuff
             Transit(_firstState);
         }
 
-        private void Update()
+        public virtual void UpdateFSM()
         {
             if (_currentState == null)
                 return;
