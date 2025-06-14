@@ -583,9 +583,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 385
-        y: 354
+        y: 384
         width: 30
-        height: 92
+        height: 62
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1754,6 +1754,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Flag_78
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 354
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41847a1ad59b7834f9c4b7f8545f2b2c
+      internalID: -1126330473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1841,6 +1862,7 @@ TextureImporter:
       Flag_75: -1093999199
       Flag_76: 741355621
       Flag_77: 2036172603
+      Flag_78: -1126330473
       Flag_8: -297305614
       Flag_9: -126817913
   spritePackingTag: 
