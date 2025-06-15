@@ -15,6 +15,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
         [SerializeField] private List<InventoryCell> _inventoryItems = new List<InventoryCell>();
         
         public Button InventoryButton => _inventoryButton;
+        public List<InventoryCell> InventoryItems => _inventoryItems;
 
         public void Init(byte _countCells)
         {
@@ -31,7 +32,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             _inventoryPanel.SetActive(show);
         }
 
-        public void RenderItems(IReadOnlyList<InventoryCell> items)
+        public void UpdateItems(IReadOnlyList<InventoryCell> items)
         {
             for (var i = 0; i < _inventoryItems.Count; i++)
             {

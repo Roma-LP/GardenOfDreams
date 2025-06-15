@@ -31,11 +31,15 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
 
         private void HandleClick()
         {
+            DropItem();
             OnCloseClicked?.Invoke();
         }
 
         public void SetData(InventoryCellData inventoryCellData)
         {
+            if (inventoryCellData == null)
+                return;
+
             _inventoryCellData = inventoryCellData;
             
             _image.sprite = _inventoryCellData.ItemDefinition.GetSprite;
@@ -59,8 +63,6 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
         public void DropItem()
         {
             ClearItem();
-
-            OnCloseClicked?.Invoke();
         }
     }
 }

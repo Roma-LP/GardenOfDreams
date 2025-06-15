@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.UI.Inventory
@@ -19,8 +20,8 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
 
         public void Init()
         {
-            _inventoryModel = new InventoryModel(INVENTORY_CELL_COUNT);
             _inventoryView.Init(INVENTORY_CELL_COUNT);
+            _inventoryModel = new InventoryModel(_inventoryView.InventoryItems);
             
             _inventoryView.ToggleInventory(false);
             
@@ -38,11 +39,12 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             _isInventoryOpen = !_isInventoryOpen;
         }
 
+        [Button]
         public bool TryAddItem(InventoryItem inventoryItem, byte countToAdd)
         {
             if (_inventoryModel.TryAddItem(inventoryItem, countToAdd))
             {
-                _inventoryView.RenderItems(_inventoryModel.InventoryCells);
+                _inventoryView.UpdateItems(_inventoryModel.InventoryCells);
                 return true;
             }
             else

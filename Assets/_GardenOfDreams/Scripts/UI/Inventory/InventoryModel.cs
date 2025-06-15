@@ -11,9 +11,10 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
         
         public IReadOnlyList<InventoryCell> InventoryCells => _inventoryCells;
 
-        public InventoryModel(byte countInventoryCells)
+        public InventoryModel(List<InventoryCell> inventoryCells)
         {
-            _inventoryCells = new List<InventoryCell>(countInventoryCells);
+            _inventoryCells = inventoryCells;
+           
             _itemDefinitionContainer = SceneContext.Instance.ItemDefinitionContainer;
         }
 
@@ -24,6 +25,9 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
 
             for (int i = 0; i < _inventoryCells.Count; i++)
             {
+                if (_inventoryCells[i].InventoryCellData == null)
+                    continue;
+
                 if (_inventoryCells[i].InventoryCellData.ItemDefinition.GetInventoryItem == inventoryItem)
                 {
                     int AmountOfFreeSpaceInTheCell =
@@ -37,6 +41,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
                     if (AmountOfFreeSpaceInTheCell >= remainderForAdd)
                     {
                         _inventoryCells[i].InventoryCellData.AppendCount(remainderForAdd);
+                        remainderForAdd = 0;
                     }
                     else
                     {
@@ -59,6 +64,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
                     if (amountOfFreeSpaceInTheCell >= remainderForAdd)
                     {
                         _inventoryCells[i].SetData(new InventoryCellData(addItemDefinition, remainderForAdd));
+                        remainderForAdd = 0;
                     }
                     else
                     {
