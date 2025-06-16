@@ -1,5 +1,4 @@
-﻿using System;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.UI.Inventory
@@ -12,11 +11,6 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
 
         private InventoryModel _inventoryModel;
         private bool _isInventoryOpen = false;
-        
-        private void Start()
-        {
-            Init();
-        }
 
         public void Init()
         {

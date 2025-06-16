@@ -1,4 +1,5 @@
-﻿using _GardenOfDreams.Scripts.UI.Inventory;
+﻿using _GardenOfDreams.Scripts.UI.HP;
+using _GardenOfDreams.Scripts.UI.Inventory;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Utilities
@@ -8,9 +9,11 @@ namespace _GardenOfDreams.Scripts.Utilities
         //[SerializeField] private Player _player;
         [SerializeField] private ItemDefinitionContainer _itemDefinitionContainer;
         [SerializeField] private InventoryController _inventoryController;
+        [SerializeField] private WorldHpBarSpawner _worldHpBarSpawner;
 
         public ItemDefinitionContainer ItemDefinitionContainer => _itemDefinitionContainer;
         public InventoryController InventoryController => _inventoryController;
+        public WorldHpBarSpawner WorldHpBarSpawner => _worldHpBarSpawner;
 
         protected override void Awake()
         {
@@ -23,7 +26,7 @@ namespace _GardenOfDreams.Scripts.Utilities
         {
             Application.targetFrameRate = 60;
         
-            
+            _inventoryController.Init();
         }
     }
 }
