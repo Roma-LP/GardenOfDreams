@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using _GardenOfDreams.Scripts.Utilities;
+using _GardenOfDreams.Scripts.Zombie;
+using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
 {
@@ -8,23 +10,60 @@ namespace _GardenOfDreams.Scripts.Player
         [SerializeField] private Transform _player;
         [SerializeField] private Transform _lookTarget;
         [SerializeField] private float radius = 1.5f;
+        [SerializeField] private EnemyDetector _enemyDetector;
 
         private Vector2 _lastDirection = Vector2.right;
+        private OrderedSet<ZombieUnit> _zombieUnits = new OrderedSet<ZombieUnit>();
+
+        public void Init()
+        {
+            _enemyDetector.OnEnemyEntered += EnemyEnteredHandler;
+            _enemyDetector.OnEnemyExited += EnemyExitedHandler;
+        }
+
+        private void OnDestroy()
+        {
+            _enemyDetector.OnEnemyEntered -= EnemyEnteredHandler;
+            _enemyDetector.OnEnemyExited -= EnemyExitedHandler;
+        }
+
+        private void EnemyEnteredHandler(ZombieUnit zombieUnit)
+        {
+            if (_zombieUnits.Add(zombieUnit))
+            {
+                Debug.Log($"[EnemyTracker] Enemy entered: {zombieUnit}");
+            }
+        }
+
+        private void EnemyExitedHandler(ZombieUnit zombieUnit)
+        {
+            if (_zombieUnits.Remove(zombieUnit))
+            {
+                Debug.Log($"[EnemyTracker] Enemy exited: {zombieUnit}");
+            }
+        }
 
         public void UpdateLookTarget()
         {
-            Vector2 direction = _joystick.Direction;
-
-            if (direction.sqrMagnitude > 0.01f)
+            if (_zombieUnits.IsEmpty)
             {
-                _lastDirection = direction.normalized;
-            }
+                Vector2 direction = _joystick.Direction;
 
-            Vector3 offset = new Vector3(_lastDirection.x, _lastDirection.y, 0) * radius;
-            _lookTarget.position = _player.position + offset;
+                if (direction.sqrMagnitude > 0.01f)
+                {
+                    _lastDirection = direction.normalized;
+                }
+
+                Vector3 offset = new Vector3(_lastDirection.x, _lastDirection.y, 0) * radius;
+                _lookTarget.position = _player.position + offset;
+            }
+            else
+            {
+                _lookTarget.position = _zombieUnits.Last.transform.position;
+            }
         }
-        
-        private void OnDrawGizmos()
+
+        private void OnDrawGizmosSelected()
         {
             if (_player == null)
                 return;

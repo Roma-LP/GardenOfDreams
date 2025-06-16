@@ -7,7 +7,7 @@ namespace _GardenOfDreams.Scripts.Zombie
     public class ZombieStatePatrol : FSMState
     {
         [SerializeField] private List<Transform> _pointsToPatrol;
-        [SerializeField] private Zombie _zombie;
+        [SerializeField] private ZombieUnit zombieUnit;
         [SerializeField] private float _waitTime = 5f;
         [SerializeField] private float _remainingDistanceToStop = 0.02f;
         
@@ -33,7 +33,7 @@ namespace _GardenOfDreams.Scripts.Zombie
             }
             else
             {
-                if (!_zombie.Agent.pathPending && _zombie.Agent.remainingDistance <= _remainingDistanceToStop)
+                if (!zombieUnit.Agent.pathPending && zombieUnit.Agent.remainingDistance <= _remainingDistanceToStop)
                 {
                     StartWaiting();
                 }
@@ -48,14 +48,14 @@ namespace _GardenOfDreams.Scripts.Zombie
 
             _currentPatrolIndex = (_currentPatrolIndex + 1) % _pointsToPatrol.Count;
             _currentPoint = _pointsToPatrol[_currentPatrolIndex];
-            _zombie.MoveTo(_currentPoint.position);
+            zombieUnit.MoveTo(_currentPoint.position);
         }
         
         private void StartWaiting()
         {
             _waitCounter = _waitTime;
-            _zombie.Agent.ResetPath();
-            _zombie.StopMoving();
+            zombieUnit.Agent.ResetPath();
+            zombieUnit.StopMoving();
             _isWaiting = true;
         }
     }

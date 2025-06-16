@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace _GardenOfDreams.Scripts.Zombie
 {
-    public class Zombie : MonoBehaviour
+    public class ZombieUnit : MonoBehaviour
     {
         [SerializeField] private ZombieAnimationController _animation;
         [SerializeField] private NavMeshAgent _agent;

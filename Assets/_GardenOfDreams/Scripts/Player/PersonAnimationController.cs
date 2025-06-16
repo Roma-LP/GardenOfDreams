@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 
-namespace _GardenOfDreams.Scripts
+namespace _GardenOfDreams.Scripts.Player
 {
     public abstract class PersonAnimationController : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _rootPerson;
+        [SerializeField, Range(0.001f,0.1f)] private float flipThreshold = 0.01f;
 
         private readonly int SPEED = Animator.StringToHash("Speed");
         
@@ -15,13 +16,16 @@ namespace _GardenOfDreams.Scripts
         {
             _animator.SetFloat(SPEED, moveInput.magnitude);
 
-            _animator.SetFloat(SPEED, moveInput.magnitude);
+            SetFacingDirection(moveInput);
+        }
 
-            if (moveInput.x < -0.01f && !_facingLeft)
+        protected virtual void SetFacingDirection(Vector2 moveInput)
+        {
+            if (moveInput.x < -flipThreshold && !_facingLeft)
             {
                 Flip(true);
             }
-            else if (moveInput.x > 0.01f && _facingLeft)
+            else if (moveInput.x > flipThreshold && _facingLeft)
             {
                 Flip(false);
             }
