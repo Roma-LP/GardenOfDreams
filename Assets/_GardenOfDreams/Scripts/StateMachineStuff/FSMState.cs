@@ -8,7 +8,7 @@ namespace _GardenOfDreams.Scripts.StateMachineStuff
     {
         [SerializeField] private List<FSMTransition> _transitions;
         
-        public virtual void Enter()
+        public void Enter()
         {
             if(enabled == false)
             {
@@ -21,7 +21,7 @@ namespace _GardenOfDreams.Scripts.StateMachineStuff
             }
         }
 
-        public virtual void Exit()
+        public void Exit()
         {
             if (enabled == true)
             {

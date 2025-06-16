@@ -2,6 +2,7 @@
 using _GardenOfDreams.Scripts.Interfaces;
 using _GardenOfDreams.Scripts.UI.HP;
 using _GardenOfDreams.Scripts.Utilities;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,7 +16,7 @@ namespace _GardenOfDreams.Scripts.Zombie
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private Transform _pivotUI;
 
-        private float _currentHealth;
+        [ShowInInspector, ReadOnly] private float _currentHealth;
         private HealthBarUI _healthBarUI;
         private WorldToUIFollower _worldToUIFollower;
         
@@ -23,22 +24,18 @@ namespace _GardenOfDreams.Scripts.Zombie
         
         public NavMeshAgent Agent => _agent;
         public float MaxHealth => _maxHealth;
+        public Transform TargetTransform => transform;
 
         public float CurrentHealth
         {
             get => _currentHealth;
             set
             {
-                _currentHealth -= value;
+                _currentHealth = value;
                 _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
 
                 OnHealthChanged?.Invoke(_currentHealth, _maxHealth);
                 _healthBarUI.SetHealth(_currentHealth);
-
-                if (_currentHealth <= 0f)
-                {
-                    Die();
-                }
             }
         }
         
@@ -79,9 +76,9 @@ namespace _GardenOfDreams.Scripts.Zombie
             CurrentHealth -= amount;
         }
 
-        public void Die()
+        private void OnDestroy()
         {
-            throw new NotImplementedException();
+            Destroy(_healthBarUI.gameObject);
         }
     }
 }

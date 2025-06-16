@@ -73,8 +73,6 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
                     }
                 }
             }
-            
-            Debug.Log($"remainderForAdd:{remainderForAdd} inventoryItem:{inventoryItem}");
 
             if (remainderForAdd == countToAdd)
             {

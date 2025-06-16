@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _GardenOfDreams.Scripts.Player
 {
@@ -6,7 +7,7 @@ namespace _GardenOfDreams.Scripts.Player
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _rootPerson;
-        [SerializeField, Range(0.001f,0.1f)] private float flipThreshold = 0.01f;
+        [SerializeField, Range(0.001f,0.1f)] private float _flipThreshold = 0.01f;
 
         private readonly int SPEED = Animator.StringToHash("Speed");
         
@@ -21,11 +22,11 @@ namespace _GardenOfDreams.Scripts.Player
 
         protected virtual void SetFacingDirection(Vector2 moveInput)
         {
-            if (moveInput.x < -flipThreshold && !_facingLeft)
+            if (moveInput.x < -_flipThreshold && !_facingLeft)
             {
                 Flip(true);
             }
-            else if (moveInput.x > flipThreshold && _facingLeft)
+            else if (moveInput.x > _flipThreshold && _facingLeft)
             {
                 Flip(false);
             }

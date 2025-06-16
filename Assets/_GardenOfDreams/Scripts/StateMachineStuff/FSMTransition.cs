@@ -13,7 +13,7 @@ namespace _GardenOfDreams.Scripts.StateMachineStuff
         {
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             NeedTransit = false;
         }

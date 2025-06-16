@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _GardenOfDreams.Scripts.StateMachineStuff;
 using UnityEngine;
 
-namespace _GardenOfDreams.Scripts.Zombie
+namespace _GardenOfDreams.Scripts.Zombie.FSM
 {
     public class ZombieStatePatrol : FSMState
     {
@@ -15,8 +16,8 @@ namespace _GardenOfDreams.Scripts.Zombie
         private float _waitCounter;
         private bool _isWaiting = false;
         private int _currentPatrolIndex;
-        
-        public override void Enter()
+
+        private void OnEnable()
         {
             GoToNextPoint();
         }

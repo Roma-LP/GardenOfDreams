@@ -41,10 +41,8 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
                 _inventoryView.UpdateItems(_inventoryModel.InventoryCells);
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
     }
 }

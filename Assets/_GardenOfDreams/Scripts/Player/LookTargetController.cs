@@ -1,4 +1,5 @@
-﻿using _GardenOfDreams.Scripts.Utilities;
+﻿using _GardenOfDreams.Scripts.Interfaces;
+using _GardenOfDreams.Scripts.Utilities;
 using _GardenOfDreams.Scripts.Zombie;
 using UnityEngine;
 
@@ -13,8 +14,10 @@ namespace _GardenOfDreams.Scripts.Player
         [SerializeField] private EnemyDetector _enemyDetector;
 
         private Vector2 _lastDirection = Vector2.right;
-        private OrderedSet<ZombieUnit> _zombieUnits = new OrderedSet<ZombieUnit>();
+        private OrderedSet<IDamageable> _damageablesUnits = new OrderedSet<IDamageable>();
 
+        public IDamageable LastDamageablesUnit => _damageablesUnits.Last;
+        
         public void Init()
         {
             _enemyDetector.OnEnemyEntered += EnemyEnteredHandler;
@@ -27,17 +30,17 @@ namespace _GardenOfDreams.Scripts.Player
             _enemyDetector.OnEnemyExited -= EnemyExitedHandler;
         }
 
-        private void EnemyEnteredHandler(ZombieUnit zombieUnit)
+        private void EnemyEnteredHandler(IDamageable zombieUnit)
         {
-            if (_zombieUnits.Add(zombieUnit))
+            if (_damageablesUnits.Add(zombieUnit))
             {
                 Debug.Log($"[EnemyTracker] Enemy entered: {zombieUnit}");
             }
         }
 
-        private void EnemyExitedHandler(ZombieUnit zombieUnit)
+        private void EnemyExitedHandler(IDamageable zombieUnit)
         {
-            if (_zombieUnits.Remove(zombieUnit))
+            if (_damageablesUnits.Remove(zombieUnit))
             {
                 Debug.Log($"[EnemyTracker] Enemy exited: {zombieUnit}");
             }
@@ -45,7 +48,7 @@ namespace _GardenOfDreams.Scripts.Player
 
         public void UpdateLookTarget()
         {
-            if (_zombieUnits.IsEmpty)
+            if (_damageablesUnits.IsEmpty)
             {
                 Vector2 direction = _joystick.Direction;
 
@@ -59,7 +62,7 @@ namespace _GardenOfDreams.Scripts.Player
             }
             else
             {
-                _lookTarget.position = _zombieUnits.Last.transform.position;
+                _lookTarget.position = LastDamageablesUnit.TargetTransform.position;
             }
         }
 

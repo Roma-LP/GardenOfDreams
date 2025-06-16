@@ -7,10 +7,17 @@ namespace _GardenOfDreams.Scripts.Player
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private LookTargetController _lookTargetController;
         [SerializeField] private ArmRotator _armRotator;
+        [SerializeField] private DropItemHandler _dropItemHandler;
+        [SerializeField] private float _damage = 25;
 
+        private PlayerUIInputHandler _playerUIInput;
+        
         private void Awake()
         {
             _lookTargetController.Init();
+            _dropItemHandler.Init();
+
+            _playerUIInput = new PlayerUIInputHandler(_lookTargetController, _damage);
         }
 
         private void Update()
@@ -18,6 +25,11 @@ namespace _GardenOfDreams.Scripts.Player
             _playerMovement.UpdateMovement();
             _lookTargetController.UpdateLookTarget();
             _armRotator.UpdateArm();
+        }
+
+        private void OnDestroy()
+        {
+            _playerUIInput.Dispose();
         }
     }
 }

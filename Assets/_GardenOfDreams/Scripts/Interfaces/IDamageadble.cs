@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Interfaces
 {
@@ -6,10 +7,10 @@ namespace _GardenOfDreams.Scripts.Interfaces
     {
         float CurrentHealth { get; }
         float MaxHealth { get; }
+        Transform TargetTransform { get; }
 
         event Action<float, float> OnHealthChanged; // (currentHealth, maxHealth)
 
         void TakeDamage(float amount);
-        void Die();
     }
 }
