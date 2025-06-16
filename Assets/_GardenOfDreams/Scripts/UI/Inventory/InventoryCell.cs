@@ -48,6 +48,11 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             
             _image.gameObject.SetActive(true);
             _buttonDropItem.gameObject.SetActive(true);
+
+            if (inventoryCellData.Count == 0)
+            {
+                ClearItem();
+            }
         }
 
         public void ClearItem()

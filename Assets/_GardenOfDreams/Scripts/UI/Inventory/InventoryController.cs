@@ -44,5 +44,16 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
 
             return false;
         }
+
+        public bool TryRemoveItem(InventoryItem inventoryItem, byte countToRemove)
+        {
+            if (_inventoryModel.TryRemoveOneItem(inventoryItem, countToRemove))
+            {
+                _inventoryView.UpdateItems(_inventoryModel.InventoryCells);
+                return true;
+            }
+
+            return false;
+        }
     }
 }

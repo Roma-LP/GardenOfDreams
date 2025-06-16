@@ -1794,6 +1794,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &268215063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1634900158213961250, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_Name
+      value: DropItemAmmunition (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1fd85edbb16449f48af410222d858943, type: 3}
 --- !u!1 &289901709
 GameObject:
   m_ObjectHideFlags: 0
@@ -8214,6 +8271,63 @@ MonoBehaviour:
   _animator: {fileID: 598141362}
   _rootPerson: {fileID: 1145418436}
   _flipThreshold: 0.01
+--- !u!1001 &601223949
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1634900158213961250, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_Name
+      value: DropItemAmmunition (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.462498
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1fd85edbb16449f48af410222d858943, type: 3}
 --- !u!1 &627287471
 GameObject:
   m_ObjectHideFlags: 0
@@ -10833,6 +10947,7 @@ MonoBehaviour:
   _armRotator: {fileID: 1800408076}
   _dropItemHandler: {fileID: 1800408080}
   _damage: 25
+  _inventoryItem: 5
 --- !u!114 &1800408080
 MonoBehaviour:
   m_ObjectHideFlags: 0

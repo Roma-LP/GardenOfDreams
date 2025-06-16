@@ -30,6 +30,23 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             _count = _count + appendCount;
         }
 
+        public void RemoveItem(int removeCount)
+        {
+            if (removeCount <= 0)
+            {
+                Debug.LogError($"[Inventory] Trying to remove a negative number!\nRemoveCount:{removeCount} Item: {_itemDefinition.GetInventoryItem}");
+                return;
+            }
+            
+            if (removeCount > _count)
+            {
+                Debug.LogError($"[Inventory] Trying to remove more than is in inventory!\nRemoveCount:{removeCount} Count:{_count}");
+                return;
+            }
+            
+            _count = _count - removeCount;
+        }
+
         public int GetAmountOfFreeSpaceInTheCell()
         {
             return _itemDefinition.GetMaxCountInStack - _count;

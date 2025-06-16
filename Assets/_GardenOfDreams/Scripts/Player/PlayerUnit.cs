@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using _GardenOfDreams.Scripts.UI.Inventory;
+using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
 {
@@ -8,7 +9,9 @@ namespace _GardenOfDreams.Scripts.Player
         [SerializeField] private LookTargetController _lookTargetController;
         [SerializeField] private ArmRotator _armRotator;
         [SerializeField] private DropItemHandler _dropItemHandler;
+        [Header("Fight Settings")]
         [SerializeField] private float _damage = 25;
+        [SerializeField] private InventoryItem _inventoryItem = InventoryItem.Ammunition;
 
         private PlayerUIInputHandler _playerUIInput;
         
@@ -17,7 +20,7 @@ namespace _GardenOfDreams.Scripts.Player
             _lookTargetController.Init();
             _dropItemHandler.Init();
 
-            _playerUIInput = new PlayerUIInputHandler(_lookTargetController, _damage);
+            _playerUIInput = new PlayerUIInputHandler(_lookTargetController, _damage, _inventoryItem);
         }
 
         private void Update()
