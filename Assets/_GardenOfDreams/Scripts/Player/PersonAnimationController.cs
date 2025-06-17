@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _GardenOfDreams.Scripts.Player
 {
     public abstract class PersonAnimationController : MonoBehaviour
     {
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
         [SerializeField] private Transform _rootPerson;
         [SerializeField, Range(0.001f,0.1f)] private float _flipThreshold = 0.01f;
 

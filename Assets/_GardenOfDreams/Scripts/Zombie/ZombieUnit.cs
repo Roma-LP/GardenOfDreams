@@ -1,5 +1,6 @@
 ﻿using System;
 using _GardenOfDreams.Scripts.Interfaces;
+using _GardenOfDreams.Scripts.Player;
 using _GardenOfDreams.Scripts.UI.HP;
 using _GardenOfDreams.Scripts.Utilities;
 using Sirenix.OdinInspector;
@@ -19,12 +20,15 @@ namespace _GardenOfDreams.Scripts.Zombie
         [ShowInInspector, ReadOnly] private float _currentHealth;
         private HealthBarUI _healthBarUI;
         private WorldToUIFollower _worldToUIFollower;
+        private PlayerUnit _playerUnit;
         
         public event Action<float, float> OnHealthChanged;
         
         public NavMeshAgent Agent => _agent;
         public float MaxHealth => _maxHealth;
         public Transform TargetTransform => transform;
+        public PlayerUnit PlayerUnit => _playerUnit;
+        public ZombieAnimationController ZombieAnimation => _animation;
 
         public float CurrentHealth
         {
@@ -47,6 +51,8 @@ namespace _GardenOfDreams.Scripts.Zombie
             _currentHealth = _maxHealth;
             _healthBarUI = SceneContext.Instance.WorldHpBarSpawner.CreateHpBar(_maxHealth);
             _worldToUIFollower = new WorldToUIFollower(_healthBarUI.RectTransformToMove, _pivotUI);
+
+            _playerUnit = SceneContext.Instance.PlayerUnit;
         }
 
         private void Update()

@@ -9,7 +9,7 @@ namespace _GardenOfDreams.Scripts.StateMachineStuff
         public FSMState TargetState => _targetState;
         public bool NeedTransit { get; protected set; }
 
-        public void Init()
+        public virtual void Init()
         {
         }
 
