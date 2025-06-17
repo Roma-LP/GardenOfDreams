@@ -1,6 +1,5 @@
 ﻿using _GardenOfDreams.Scripts.Interfaces;
 using _GardenOfDreams.Scripts.Utilities;
-using _GardenOfDreams.Scripts.Zombie;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
@@ -34,7 +33,7 @@ namespace _GardenOfDreams.Scripts.Player
         {
             if (_damageablesUnits.Add(zombieUnit))
             {
-                Debug.Log($"[EnemyTracker] Enemy entered: {zombieUnit}");
+                //Debug.Log($"[EnemyTracker] Enemy entered: {zombieUnit}");
             }
         }
 
@@ -42,7 +41,7 @@ namespace _GardenOfDreams.Scripts.Player
         {
             if (_damageablesUnits.Remove(zombieUnit))
             {
-                Debug.Log($"[EnemyTracker] Enemy exited: {zombieUnit}");
+                //Debug.Log($"[EnemyTracker] Enemy exited: {zombieUnit}");
             }
         }
 

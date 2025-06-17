@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
 {
-    public class PlayerUnit : MonoBehaviour
+    public class PlayerUnit : EnemyBase
     {
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private LookTargetController _lookTargetController;
@@ -15,8 +15,10 @@ namespace _GardenOfDreams.Scripts.Player
 
         private PlayerUIInputHandler _playerUIInput;
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             _lookTargetController.Init();
             _dropItemHandler.Init();
 
@@ -30,8 +32,10 @@ namespace _GardenOfDreams.Scripts.Player
             _armRotator.UpdateArm();
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
+            
             _playerUIInput.Dispose();
         }
     }

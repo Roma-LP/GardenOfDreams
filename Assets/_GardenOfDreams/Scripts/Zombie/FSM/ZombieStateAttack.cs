@@ -1,5 +1,4 @@
-﻿using _GardenOfDreams.Scripts.Player;
-using _GardenOfDreams.Scripts.StateMachineStuff;
+﻿using _GardenOfDreams.Scripts.StateMachineStuff;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Zombie.FSM
@@ -9,9 +8,7 @@ namespace _GardenOfDreams.Scripts.Zombie.FSM
         [SerializeField] private ZombieUnit _zombieUnit;
         [SerializeField] private float _attackDistance = 0.2f;
         [SerializeField] private float _attackCooldown = 2f;
-
-        private readonly PlayerUnit _playerUnit;
-        private readonly Animator _animator;
+        [SerializeField] private float _attackDamage = 20f;
 
         private float _cooldownTimer;
         private bool _isAttackAnimationIsPlaying;
@@ -30,6 +27,7 @@ namespace _GardenOfDreams.Scripts.Zombie.FSM
         {
             
             _zombieUnit.ZombieAnimation.OnAttackAnimationEnd -= AttackAnimationEndHandler;
+            _zombieUnit.ZombieAnimation.OnAttackMoment -= AttackMomentHandler;
         }
 
         public override void UpdateState()
@@ -77,7 +75,7 @@ namespace _GardenOfDreams.Scripts.Zombie.FSM
             if(_isInAttackDistance == false)
                 return;
             
-            _playerUnit.
+            _zombieUnit.PlayerUnit.TakeDamage(_attackDamage);
         }
     }
 }

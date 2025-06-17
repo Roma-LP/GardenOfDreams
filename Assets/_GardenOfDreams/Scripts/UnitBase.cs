@@ -12,12 +12,12 @@ namespace _GardenOfDreams.Scripts
         [ShowInInspector, ReadOnly] private float _currentHealth;
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private Transform _pivotUI;
-        
+
         private HealthBarUI _healthBarUI;
         private WorldToUIFollower _worldToUIFollower;
-        
+
         public event Action<float, float> OnHealthChanged;
-        
+
         public float CurrentHealth
         {
             get => _currentHealth;
@@ -30,7 +30,7 @@ namespace _GardenOfDreams.Scripts
                 _healthBarUI.SetHealth(_currentHealth);
             }
         }
-        
+
         public float MaxHealth => _maxHealth;
         public Transform TargetTransform => transform;
 
@@ -40,10 +40,16 @@ namespace _GardenOfDreams.Scripts
             _healthBarUI = SceneContext.Instance.WorldHpBarSpawner.CreateHpBar(_maxHealth);
             _worldToUIFollower = new WorldToUIFollower(_healthBarUI.RectTransformToMove, _pivotUI);
         }
-        
+
         protected virtual void LateUpdate()
         {
             _worldToUIFollower.LateUpdateUIFollower();
+        }
+
+        protected virtual void OnDestroy()
+        {
+            if (_healthBarUI is not null)
+                Destroy(_healthBarUI.gameObject);
         }
 
         public void TakeDamage(float amount)
