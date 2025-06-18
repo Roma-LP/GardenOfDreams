@@ -1,21 +1,24 @@
-﻿using _GardenOfDreams.Scripts.Player;
+﻿using _GardenOfDreams.Scripts.Interfaces;
+using _GardenOfDreams.Scripts.Player;
 using _GardenOfDreams.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace _GardenOfDreams.Scripts.Zombie
 {
-    public class ZombieUnit : EnemyBase
+    public class ZombieUnit : EnemyBase, ISpawnable<ZombieLinks>
     {
         [SerializeField] private ZombieAnimationController _animation;
         [SerializeField] private NavMeshAgent _agent;
         [SerializeField] private ZombieFSM _zombieFsm;
 
         private PlayerUnit _playerUnit;
+        private ZombieLinks _zombieLinks;
         
         public NavMeshAgent Agent => _agent;
         public PlayerUnit PlayerUnit => _playerUnit;
         public ZombieAnimationController ZombieAnimation => _animation;
+        public ZombieLinks ZombieLinks => _zombieLinks;
 
         protected override void Awake()
         {
@@ -42,6 +45,11 @@ namespace _GardenOfDreams.Scripts.Zombie
         {
             _agent.ResetPath();
             _animation.SetSpeed(Vector2.zero);
+        }
+
+        public void OnSpawned(ZombieLinks parametrs)
+        {
+            _zombieLinks = parametrs;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using _GardenOfDreams.Scripts.Player;
+using _GardenOfDreams.Scripts.Spawners;
 using _GardenOfDreams.Scripts.UI.HP;
 using _GardenOfDreams.Scripts.UI.Inventory;
 using _GardenOfDreams.Scripts.UI.PlayerInput;
@@ -13,6 +14,7 @@ namespace _GardenOfDreams.Scripts.Utilities
         [SerializeField] private InventoryController _inventoryController;
         [SerializeField] private WorldHpBarSpawner _worldHpBarSpawner;
         [SerializeField] private PlayerUIInput _playerUIInput;
+        [SerializeField] private EnemySpawner _enemySpawner;
 
         public PlayerUnit PlayerUnit => _playerUnit;
         public ItemDefinitionContainer ItemDefinitionContainer => _itemDefinitionContainer;
@@ -32,6 +34,7 @@ namespace _GardenOfDreams.Scripts.Utilities
             Application.targetFrameRate = 60;
         
             _inventoryController.Init();
+            _enemySpawner.Init();
         }
     }
 }
