@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
 {
-    public class PlayerUnit : EnemyBase
+    public class PlayerUnit : UnitBase
     {
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private LookTargetController _lookTargetController;

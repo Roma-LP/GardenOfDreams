@@ -10,6 +10,7 @@ namespace _GardenOfDreams.Scripts.Interfaces
         Transform TargetTransform { get; }
 
         event Action<float, float> OnHealthChanged; // (currentHealth, maxHealth)
+        event Action<float> OnTakeDamage;
 
         void TakeDamage(float amount);
     }

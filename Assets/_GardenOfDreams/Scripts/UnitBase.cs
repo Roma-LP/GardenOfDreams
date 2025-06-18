@@ -7,16 +7,18 @@ using UnityEngine;
 
 namespace _GardenOfDreams.Scripts
 {
-    public abstract class EnemyBase : MonoBehaviour, IDamageable
+    public abstract class UnitBase : MonoBehaviour, IDamageable
     {
         [ShowInInspector, ReadOnly] private float _currentHealth;
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private Transform _pivotUI;
+        [SerializeField] private HitFlashEffect _hitFlashEffect;
 
         private HealthBarUI _healthBarUI;
         private WorldToUIFollower _worldToUIFollower;
 
         public event Action<float, float> OnHealthChanged;
+        public event Action<float> OnTakeDamage;
 
         public float CurrentHealth
         {
@@ -36,6 +38,8 @@ namespace _GardenOfDreams.Scripts
 
         protected virtual void Awake()
         {
+            _hitFlashEffect.Init();
+            
             _currentHealth = _maxHealth;
             _healthBarUI = SceneContext.Instance.WorldHpBarSpawner.CreateHpBar(_maxHealth);
             _worldToUIFollower = new WorldToUIFollower(_healthBarUI.RectTransformToMove, _pivotUI);
@@ -48,13 +52,14 @@ namespace _GardenOfDreams.Scripts
 
         protected virtual void OnDestroy()
         {
-            if (_healthBarUI.gameObject is not null)
+            if (_healthBarUI != null)
                 Destroy(_healthBarUI.gameObject);
         }
 
         public void TakeDamage(float amount)
         {
             CurrentHealth -= amount;
+            OnTakeDamage?.Invoke(amount);
         }
     }
 }

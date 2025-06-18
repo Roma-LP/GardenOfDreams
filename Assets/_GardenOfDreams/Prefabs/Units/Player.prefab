@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 484111196817675623}
   - component: {fileID: 484111196817675621}
   - component: {fileID: 484111196817675620}
+  - component: {fileID: 1966483545942373214}
   m_Layer: 0
   m_Name: PlayerRootSprites
   m_TagString: Untagged
@@ -105,6 +106,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1966483545942373214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484111196817675622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36b6be5d8ec6c842912f024569fdef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBase: {fileID: 484111198193299445}
+  _spriteRenderers:
+  - {fileID: 484111197623379319}
+  - {fileID: 484111198699201138}
+  - {fileID: 484111197075854331}
+  - {fileID: 484111197990072336}
+  - {fileID: 484111197828307030}
+  - {fileID: 484111197523135033}
+  - {fileID: 484111197517007885}
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _flashDuration: 0.1
 --- !u!1 &484111197075852293
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +838,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _pivotUI: {fileID: 484111196595334928}
+  _hitFlashEffect: {fileID: 1966483545942373214}
   _playerMovement: {fileID: 484111198193299440}
   _lookTargetController: {fileID: 484111198193299447}
   _armRotator: {fileID: 484111198193299446}

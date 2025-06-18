@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 namespace _GardenOfDreams.Scripts.Zombie
 {
-    public class ZombieUnit : EnemyBase, ISpawnable<ZombieLinks>
+    public class ZombieUnit : UnitBase, ISpawnable<ZombieLinks>
     {
         [SerializeField] private ZombieAnimationController _animation;
         [SerializeField] private NavMeshAgent _agent;

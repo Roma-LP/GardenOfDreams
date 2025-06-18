@@ -427,6 +427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _pivotUI: {fileID: 8940519702900872880}
+  _hitFlashEffect: {fileID: 255694833032334189}
   _animation: {fileID: 8940519703918207646}
   _agent: {fileID: 8940519703400397291}
   _zombieFsm: {fileID: 8940519703400397284}
@@ -498,6 +499,7 @@ MonoBehaviour:
   - {fileID: 8940519703400397283}
   _pointsToPatrol: []
   _zombieUnit: {fileID: 8940519703400397290}
+  _useRandomPatrol: 1
   _waitTime: 5
   _remainingDistanceToStop: 0.02
 --- !u!114 &8940519703400397286
@@ -677,6 +679,7 @@ GameObject:
   - component: {fileID: 8940519703918207644}
   - component: {fileID: 8940519703918207646}
   - component: {fileID: 8940519703918207647}
+  - component: {fileID: 255694833032334189}
   m_Layer: 0
   m_Name: ZombieRootSprites
   m_TagString: Untagged
@@ -739,6 +742,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &255694833032334189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8940519703918207645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36b6be5d8ec6c842912f024569fdef6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitBase: {fileID: 8940519703400397290}
+  _spriteRenderers:
+  - {fileID: 8940519703050170725}
+  - {fileID: 8940519704605226858}
+  - {fileID: 8940519704627603329}
+  - {fileID: 8940519702863479392}
+  - {fileID: 8940519703000643434}
+  - {fileID: 8940519703666794769}
+  _flashColor: {r: 1, g: 0, b: 0, a: 1}
+  _flashDuration: 0.1
 --- !u!1 &8940519704605226856
 GameObject:
   m_ObjectHideFlags: 0
