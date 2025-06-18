@@ -21,6 +21,7 @@ namespace _GardenOfDreams.Scripts.Player
             
             _lookTargetController.Init();
             _dropItemHandler.Init();
+            _playerMovement.Init();
 
             _playerUIInput = new PlayerUIInputHandler(_lookTargetController, _damage, _inventoryItem);
         }

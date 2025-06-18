@@ -1,3 +1,4 @@
+using _GardenOfDreams.Scripts.Utilities;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
@@ -6,10 +7,15 @@ namespace _GardenOfDreams.Scripts.Player
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _moveSpeed = 3;
-        [SerializeField] private Joystick _joystick;
         [SerializeField] private PlayerAnimationController _animator;
 
         private Vector2 _moveInput;
+        private Joystick _joystick;
+
+        public void Init()
+        {
+            _joystick = SceneContext.Instance.PlayerUIInput.Joystick;
+        }   
         
         public void UpdateMovement()
         {

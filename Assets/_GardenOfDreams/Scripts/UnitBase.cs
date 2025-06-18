@@ -48,7 +48,7 @@ namespace _GardenOfDreams.Scripts
 
         protected virtual void OnDestroy()
         {
-            if (_healthBarUI is not null)
+            if (_healthBarUI.gameObject is not null)
                 Destroy(_healthBarUI.gameObject);
         }
 

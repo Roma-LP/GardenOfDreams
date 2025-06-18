@@ -6,7 +6,6 @@ namespace _GardenOfDreams.Scripts.Player
 {
     public class LookTargetController : MonoBehaviour
     {
-        [SerializeField] private Joystick _joystick;
         [SerializeField] private Transform _player;
         [SerializeField] private Transform _lookTarget;
         [SerializeField] private float radius = 1.5f;
@@ -14,11 +13,14 @@ namespace _GardenOfDreams.Scripts.Player
 
         private Vector2 _lastDirection = Vector2.right;
         private OrderedSet<IDamageable> _damageablesUnits = new OrderedSet<IDamageable>();
+        private Joystick _joystick;
 
         public IDamageable LastDamageablesUnit => _damageablesUnits.Last;
         
         public void Init()
         {
+            _joystick = SceneContext.Instance.PlayerUIInput.Joystick;
+            
             _enemyDetector.OnEnemyEntered += EnemyEnteredHandler;
             _enemyDetector.OnEnemyExited += EnemyExitedHandler;
         }
@@ -33,7 +35,6 @@ namespace _GardenOfDreams.Scripts.Player
         {
             if (_damageablesUnits.Add(zombieUnit))
             {
-                //Debug.Log($"[EnemyTracker] Enemy entered: {zombieUnit}");
             }
         }
 
@@ -41,7 +42,6 @@ namespace _GardenOfDreams.Scripts.Player
         {
             if (_damageablesUnits.Remove(zombieUnit))
             {
-                //Debug.Log($"[EnemyTracker] Enemy exited: {zombieUnit}");
             }
         }
 

@@ -7,6 +7,9 @@ namespace _GardenOfDreams.Scripts.UI.PlayerInput
     public class PlayerUIInput : MonoBehaviour
     {
         [SerializeField] private Button _fireButton;
+        [SerializeField] private Joystick _joystick;
+
+        public Joystick Joystick => _joystick;
 
         public event Action OnFirePressed;
 
