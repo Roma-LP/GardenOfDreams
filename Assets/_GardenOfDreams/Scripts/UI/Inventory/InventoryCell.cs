@@ -11,6 +11,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
         [SerializeField] private TMP_Text _count;
         [SerializeField] private TMP_Text _maxCount;
         [SerializeField] private Button _buttonDropItem;
+        [SerializeField] private GameObject _texts;
 
         private bool _isFree;
         private InventoryCellData _inventoryCellData;
@@ -35,6 +36,11 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             OnCloseClicked?.Invoke();
         }
 
+        private void SetTextView(bool active)
+        {
+            _texts.SetActive(active);
+        }
+
         public void SetData(InventoryCellData inventoryCellData)
         {
             if (inventoryCellData == null)
@@ -53,6 +59,8 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             {
                 ClearItem();
             }
+
+            SetTextView(inventoryCellData.Count != 1);
         }
 
         public void ClearItem()
@@ -63,6 +71,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             _count.text = "";
             _maxCount.text = "";
             _buttonDropItem.gameObject.SetActive(false);
+            SetTextView(false);
         }
 
         public void DropItem()

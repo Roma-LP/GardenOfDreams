@@ -33,7 +33,7 @@ namespace _GardenOfDreams.Scripts.SaveTools.Models
             {
                 _playerSubData = new PlayerSubData
                 {
-                    Health = default,
+                    Health = -1,
                     Position = new SerializableVector3(position)
                 };
             }
@@ -46,6 +46,9 @@ namespace _GardenOfDreams.Scripts.SaveTools.Models
             health = -1;
             
             if (IsPlayerSubDataNull())
+                return false;
+
+            if (_playerSubData.Health == -1)
                 return false;
 
             health = _playerSubData.Health;
