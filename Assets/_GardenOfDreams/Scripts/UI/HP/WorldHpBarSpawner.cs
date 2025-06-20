@@ -7,11 +7,11 @@ namespace _GardenOfDreams.Scripts.UI.HP
         [SerializeField] private HealthBarUI _hpBarPrefab;
         [SerializeField] private Transform _healthBarContainer;
 
-        public HealthBarUI CreateHpBar(float maxHealth)
+        public HealthBarUI CreateHpBar(float currentHealth, float maxHealth)
         {
             HealthBarUI barUI = Instantiate(_hpBarPrefab, _healthBarContainer.transform);
 
-            barUI.Init(maxHealth);
+            barUI.Init(currentHealth, maxHealth);
 
             return barUI;
         }

@@ -9,7 +9,7 @@ namespace _GardenOfDreams.Scripts
 {
     public abstract class UnitBase : MonoBehaviour, IDamageable
     {
-        [ShowInInspector, ReadOnly] private float _currentHealth;
+        [ShowInInspector, ReadOnly] protected float _currentHealth;
         [SerializeField] private float _maxHealth = 100f;
         [SerializeField] private Transform _pivotUI;
         [SerializeField] private HitFlashEffect _hitFlashEffect;
@@ -23,7 +23,7 @@ namespace _GardenOfDreams.Scripts
         public float CurrentHealth
         {
             get => _currentHealth;
-            set
+            private set
             {
                 _currentHealth = value;
                 _currentHealth = Mathf.Clamp(_currentHealth, 0f, _maxHealth);
@@ -40,9 +40,14 @@ namespace _GardenOfDreams.Scripts
         {
             _hitFlashEffect.Init();
             
-            _currentHealth = _maxHealth;
-            _healthBarUI = SceneContext.Instance.WorldHpBarSpawner.CreateHpBar(_maxHealth);
+            _currentHealth = GetInitialHealth();
+            _healthBarUI = SceneContext.Instance.WorldHpBarSpawner.CreateHpBar(_currentHealth, _maxHealth);
             _worldToUIFollower = new WorldToUIFollower(_healthBarUI.RectTransformToMove, _pivotUI);
+        }
+        
+        protected virtual float GetInitialHealth()
+        {
+            return _maxHealth;
         }
 
         protected virtual void LateUpdate()

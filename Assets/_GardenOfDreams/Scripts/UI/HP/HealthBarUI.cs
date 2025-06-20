@@ -22,11 +22,11 @@ namespace _GardenOfDreams.Scripts.UI.HP
         
         public RectTransform RectTransformToMove => _rectToMove;
 
-        public void Init(float maxHealth)
+        public void Init(float currentHealth, float maxHealth)
         {
             _maxHealth = maxHealth;
             _slider.maxValue = maxHealth;
-            _slider.value = maxHealth;
+            _slider.value = currentHealth;
             UpdateColor(1f, 0);
         }
 

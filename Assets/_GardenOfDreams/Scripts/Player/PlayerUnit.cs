@@ -1,4 +1,6 @@
-﻿using _GardenOfDreams.Scripts.UI.Inventory;
+﻿using _GardenOfDreams.Scripts.SaveTools.Models;
+using _GardenOfDreams.Scripts.UI.Inventory;
+using _GardenOfDreams.Scripts.Utilities;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Player
@@ -14,6 +16,7 @@ namespace _GardenOfDreams.Scripts.Player
         [SerializeField] private InventoryItem _inventoryItem = InventoryItem.Ammunition;
 
         private PlayerUIInputHandler _playerUIInput;
+        private PlayerDataUpdateTrigger _playerDataUpdateTrigger;
         
         protected override void Awake()
         {
@@ -24,6 +27,7 @@ namespace _GardenOfDreams.Scripts.Player
             _playerMovement.Init();
 
             _playerUIInput = new PlayerUIInputHandler(_lookTargetController, _damage, _inventoryItem);
+            _playerDataUpdateTrigger = new PlayerDataUpdateTrigger(this);
         }
 
         private void Update()
@@ -33,11 +37,26 @@ namespace _GardenOfDreams.Scripts.Player
             _armRotator.UpdateArm();
         }
 
+        protected override float GetInitialHealth()
+        {
+            PlayerData playerData = SceneContext.Instance.ProjectDatasContainer.PlayerData;
+
+            if (playerData.TryGetHealth(out float health))
+            {
+                return health;
+            }
+            else
+            {
+                return base.GetInitialHealth();
+            }
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
             
             _playerUIInput.Dispose();
+            _playerDataUpdateTrigger.Dispose();
         }
     }
 }
