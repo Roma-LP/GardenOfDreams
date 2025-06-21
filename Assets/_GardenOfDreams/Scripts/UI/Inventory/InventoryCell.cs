@@ -11,34 +11,48 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
         [SerializeField] private TMP_Text _count;
         [SerializeField] private TMP_Text _maxCount;
         [SerializeField] private Button _buttonDropItem;
+        [SerializeField] private Button _buttonCellClick;
         [SerializeField] private GameObject _texts;
 
-        private bool _isFree;
         private InventoryCellData _inventoryCellData;
 
         public InventoryCellData InventoryCellData => _inventoryCellData;
         
-        public event Action OnCloseClicked;
+        public event Action<InventoryCell> OnCloseClicked;
+        public event Action<InventoryCell> OnCellClicked;
 
         private void OnEnable()
         {
-            _buttonDropItem.onClick.AddListener(HandleClick);
+            _buttonDropItem.onClick.AddListener(HandleDropItemClick);
+            _buttonCellClick.onClick.AddListener(HandleCellClick);
         }
 
         private void OnDisable()
         {
-            _buttonDropItem.onClick.RemoveListener(HandleClick);
+            _buttonDropItem.onClick.RemoveListener(HandleDropItemClick);
+            _buttonCellClick.onClick.RemoveListener(HandleCellClick);
+
+            SetCloseButtonView(false);
         }
 
-        private void HandleClick()
+        private void HandleDropItemClick()
         {
-            DropItem();
-            OnCloseClicked?.Invoke();
+            OnCloseClicked?.Invoke(this);
+        }
+
+        private void HandleCellClick()
+        {
+            OnCellClicked?.Invoke(this);
         }
 
         private void SetTextView(bool active)
         {
             _texts.SetActive(active);
+        }
+
+        public void SetCloseButtonView(bool active)
+        {
+            _buttonDropItem.gameObject.SetActive(active);
         }
 
         public void SetData(InventoryCellData inventoryCellData)
@@ -53,11 +67,11 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             _maxCount.text = _inventoryCellData.ItemDefinition.GetMaxCountInStack.ToString();
             
             _image.gameObject.SetActive(true);
-            _buttonDropItem.gameObject.SetActive(true);
 
             if (inventoryCellData.Count == 0)
             {
                 ClearItem();
+                return;
             }
 
             SetTextView(inventoryCellData.Count != 1);
@@ -70,7 +84,7 @@ namespace _GardenOfDreams.Scripts.UI.Inventory
             _image.gameObject.SetActive(false);
             _count.text = "";
             _maxCount.text = "";
-            _buttonDropItem.gameObject.SetActive(false);
+            SetCloseButtonView(false);
             SetTextView(false);
         }
 

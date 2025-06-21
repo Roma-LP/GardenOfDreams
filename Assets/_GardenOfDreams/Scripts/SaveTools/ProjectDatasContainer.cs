@@ -22,6 +22,7 @@ namespace _GardenOfDreams.Scripts.SaveTools
         #endif
 
         public PlayerData PlayerData { private set; get; }
+        public InventoryData InventoryData { private set; get; }
 
         public void Init()
         {
@@ -33,8 +34,10 @@ namespace _GardenOfDreams.Scripts.SaveTools
         private void ReinitializeData()
         {
             PlayerData = new PlayerData();
+            InventoryData = new InventoryData();
 
             Register(PlayerData);
+            Register(InventoryData);
         }
 
         private void Register<T>(ProgressData<T> component) where T : class, new()

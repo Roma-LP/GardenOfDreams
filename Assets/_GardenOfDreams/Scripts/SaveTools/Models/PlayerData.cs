@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.SaveTools.Models
 {
-    public class PlayerData : ProgressData<PlayerSubData>, IDisposable
+    public class PlayerData : ProgressData<PlayerSubData>
     {
         private PlayerSubData _playerSubData;
 
@@ -74,11 +74,6 @@ namespace _GardenOfDreams.Scripts.SaveTools.Models
         public override void SetProgressModel(PlayerSubData state)
         {
             _playerSubData = state;
-        }
-
-        public void Dispose()
-        {
-            
         }
     }
 
