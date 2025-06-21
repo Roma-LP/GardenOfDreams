@@ -35,7 +35,7 @@ namespace _GardenOfDreams.Scripts.UI.HP
             currentHealth = Mathf.Clamp(currentHealth, 0, _maxHealth);
             float normalized = currentHealth / _maxHealth;
             
-            _slider.DOValue(currentHealth, _updateDuration).SetEase(Ease.OutQuad);
+            _slider.DOValue(currentHealth, _updateDuration).SetEase(Ease.OutQuad).SetLink(gameObject);
             
             UpdateColor(normalized, _updateDuration);
         }
@@ -43,7 +43,7 @@ namespace _GardenOfDreams.Scripts.UI.HP
         private void UpdateColor(float normalizedValue, float updateDuration)
         {
             Color targetColor = Color.Lerp(_lowHealthColor, _fullHealthColor, normalizedValue);
-            _fillImage.DOColor(targetColor, updateDuration).SetEase(Ease.OutQuad);
+            _fillImage.DOColor(targetColor, updateDuration).SetEase(Ease.OutQuad).SetLink(gameObject);;
         }
     }
 }

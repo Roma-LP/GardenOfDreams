@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aa0cfee8c73ed54e969ed71edf4d2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 0
+  _isNeedToSave: 1
   _inventoryItem: 5
-  _countItem: 1
+  _countItem: 5
   _pulseScale: 2
   _duration: 0.5
   _targetTransform: {fileID: 1634900158252511707}

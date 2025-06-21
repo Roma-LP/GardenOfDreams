@@ -1214,6 +1214,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropItemAmmunition
       objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _isNeedToSave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1625,17 +1629,33 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropItemAmmunition (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _id
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _duration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _pulseScale
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _isNeedToSave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.21
+      value: -9.96
       objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.84
+      value: -6.91
       objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1668,6 +1688,18 @@ PrefabInstance:
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158252511708, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158252511708, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158252511708, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fd85edbb16449f48af410222d858943, type: 3}
@@ -7981,6 +8013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropItemAmmunition (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _id
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -9065,6 +9101,10 @@ PrefabInstance:
     - target: {fileID: 1634900158213961250, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_Name
       value: DropItemAmmunition (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _id
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_RootOrder

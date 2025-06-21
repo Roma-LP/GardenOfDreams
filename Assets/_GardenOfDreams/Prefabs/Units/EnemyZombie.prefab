@@ -565,7 +565,7 @@ MonoBehaviour:
   - {fileID: 8940519703400397281}
   _zombieUnit: {fileID: 8940519703400397290}
   _attackDistance: 1.2
-  _attackCooldown: 5
+  _attackCooldown: 2
   _attackDamage: 20
 --- !u!114 &8940519703400397281
 MonoBehaviour:

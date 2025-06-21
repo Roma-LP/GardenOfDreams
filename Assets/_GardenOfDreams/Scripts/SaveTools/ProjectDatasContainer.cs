@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using _GardenOfDreams.Scripts.Interfaces;
 using _GardenOfDreams.Scripts.SaveTools.Models;
 using Newtonsoft.Json;
@@ -12,19 +13,22 @@ namespace _GardenOfDreams.Scripts.SaveTools
     public class ProjectDatasContainer : IDisposable
     {
         private const string SAVE_FILE_NAME = "save.json";
-        
+
         private Dictionary<Type, IProgressData> _components = new();
-        private static string SavePath => 
-            #if UNITY_EDITOR
+        private bool _shouldSaveOnDispose = true;
+
+        private static string SavePath =>
+#if UNITY_EDITOR
             Path.Combine(Application.dataPath, SAVE_FILE_NAME);
-            #else 
+#else
             Path.Combine(Application.persistentDataPath, SaveFileName);
-        #endif
+#endif
 
         public PlayerData PlayerData { private set; get; }
         public InventoryData InventoryData { private set; get; }
+        public DropItemData DropItemData { private set; get; }
 
-        public void Init()
+        public ProjectDatasContainer()
         {
             ReinitializeData();
 
@@ -35,9 +39,11 @@ namespace _GardenOfDreams.Scripts.SaveTools
         {
             PlayerData = new PlayerData();
             InventoryData = new InventoryData();
+            DropItemData = new DropItemData();
 
             Register(PlayerData);
             Register(InventoryData);
+            Register(DropItemData);
         }
 
         private void Register<T>(ProgressData<T> component) where T : class, new()
@@ -45,9 +51,17 @@ namespace _GardenOfDreams.Scripts.SaveTools
             _components[typeof(T)] = component;
         }
 
-        private void Unregister<T>(ProgressData<T> component) where T : class, new()
+        private void RemoveNullValues()
         {
-            _components.Remove(typeof(T));
+            List<Type> keysToRemove = _components
+                .Where(pair => pair.Value.GetProgressModel() == null)
+                .Select(pair => pair.Key)
+                .ToList();
+
+            foreach (Type key in keysToRemove)
+            {
+                _components.Remove(key);
+            }
         }
 
         private void SaveGame()
@@ -69,7 +83,7 @@ namespace _GardenOfDreams.Scripts.SaveTools
         {
             if (!File.Exists(SavePath))
             {
-                Debug.LogWarning("No save file found.");
+                Debug.Log("No save file found. New Game");
                 return;
             }
 
@@ -88,9 +102,25 @@ namespace _GardenOfDreams.Scripts.SaveTools
             Debug.Log("Game loaded.");
         }
 
+        public void ClearSaveFile()
+        {
+            if (File.Exists(SavePath))
+            {
+                string metaPath = SavePath + ".meta";
+                File.Delete(SavePath);
+                File.Delete(metaPath);
+            }
+
+            _shouldSaveOnDispose = false;
+        }
+
         public void Dispose()
         {
-            SaveGame();
+            if (_shouldSaveOnDispose)
+            {
+                RemoveNullValues();
+                SaveGame();
+            }
         }
     }
 }

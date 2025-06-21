@@ -5,18 +5,11 @@ namespace _GardenOfDreams.Scripts.Utilities
     public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
-        private static bool _isShuttingDown = false;
 
         public static T Instance
         {
             get
             {
-                if (_isShuttingDown)
-                {
-                    Debug.LogWarning($"[Singleton] Instance of {typeof(T)} was requested while shutting down.");
-                    return null;
-                }
-
                 if (_instance == null)
                 {
                     _instance = FindObjectOfType<T>();
@@ -48,14 +41,8 @@ namespace _GardenOfDreams.Scripts.Utilities
         {
             if (_instance == this)
             {
-                _isShuttingDown = true;
                 _instance = null;
             }
-        }
-
-        protected virtual void OnApplicationQuit()
-        {
-            _isShuttingDown = true;
         }
     }
 }

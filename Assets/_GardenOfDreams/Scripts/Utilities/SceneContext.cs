@@ -4,6 +4,7 @@ using _GardenOfDreams.Scripts.Spawners;
 using _GardenOfDreams.Scripts.UI.HP;
 using _GardenOfDreams.Scripts.UI.Inventory;
 using _GardenOfDreams.Scripts.UI.PlayerInput;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _GardenOfDreams.Scripts.Utilities
@@ -19,6 +20,7 @@ namespace _GardenOfDreams.Scripts.Utilities
 
         private ProjectDatasContainer _projectDatasContainer;
         private PlayerUnit _playerUnit;
+        private LevelRestarter _levelRestarter;
         
         public PlayerUnit PlayerUnit => _playerUnit;
         public ItemDefinitionContainer ItemDefinitionContainer => _itemDefinitionContainer;
@@ -40,10 +42,11 @@ namespace _GardenOfDreams.Scripts.Utilities
 
             _projectDatasContainer = new ProjectDatasContainer();
         
-            _projectDatasContainer.Init();
             _playerSpawner.Init(out _playerUnit);
             _inventoryController.Init();
             _enemySpawner.Init();
+            
+            _levelRestarter = new LevelRestarter(_playerUnit);
         }
 
         protected override void OnDestroy()
@@ -51,6 +54,7 @@ namespace _GardenOfDreams.Scripts.Utilities
             base.OnDestroy();
             
             _projectDatasContainer.Dispose();
+            _levelRestarter.Dispose();
         }
     }
 }
