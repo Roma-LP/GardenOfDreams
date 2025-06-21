@@ -11,6 +11,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropItemSwords
       objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _countItem
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634900158213961251, guid: 1fd85edbb16449f48af410222d858943, type: 3}
+      propertyPath: _inventoryItem
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1634900158213961252, guid: 1fd85edbb16449f48af410222d858943, type: 3}
       propertyPath: m_RootOrder
       value: 0
